@@ -1,0 +1,85 @@
+/* Main Container */
+.about-container {
+  background: url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1650&q=80")
+    no-repeat center center/cover;
+  border-radius: 12px;
+  padding: 60px 20px;
+  color: #fff;
+  min-height: 100vh;
+  min-width: 100%;
+}
+
+/* Heading Style */
+.about-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #f1f1f1;
+  text-shadow: 2px 2px #000;
+}
+
+/* Developer Image Styling */
+.home-image {
+  border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+  animation: float 6s ease-in-out infinite;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Card Styling */
+.about-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Text Styling */
+.about-text {
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.about-quote {
+  font-style: italic;
+  font-weight: 500;
+  color: #007bff;
+}
+
+/* Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .about-heading {
+    font-size: 2rem;
+  }
+
+  .about-card {
+    padding: 16px;
+  }
+
+  .home-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+}

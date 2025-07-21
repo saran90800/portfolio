@@ -1,0 +1,121 @@
+/* Gradient background with wave effect */
+.home-container {
+background-image: url("https://plus.unsplash.com/premium_photo-1661775756810-82dbd209fc95?q=80&w=1654&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+
+  
+  animation: gradientWave 15s ease infinite;
+  color: white;
+  min-height: 100vh;
+  min-width: 100%;
+  padding-top: 60px;
+}
+
+@keyframes gradientWave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Intro title shimmer */
+.home-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3), 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.home-subtitle {
+  font-size: 1.5rem;
+  color: #c7ecee;
+  margin-bottom: 10px;
+}
+
+.home-description {
+  font-size: 1rem;
+  color: #dff9fb;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+/* Highlighted name shimmer effect */
+.highlighted-name {
+  font-weight: bold;
+  background: linear-gradient(90deg, #321553, #2945a1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200%; }
+  100% { background-position: 200%; }
+}
+
+/* Tech icons hover effect */
+.tech-icons img {
+  margin: 10px;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.tech-icons img:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.8));
+}
+
+/* Buttons styling */
+.home-buttons .btn {
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.home-buttons .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
+}
+
+/* Rounded image with layered background and float */
+.saran-round-image {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid white;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  animation: floatImage 5s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+@keyframes floatImage {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+
+@keyframes floatRound {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.saran-round-image {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid white;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.saran-round-image:hover {
+  transform: scale(1.05);
+}

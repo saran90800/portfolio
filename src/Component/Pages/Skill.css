@@ -1,0 +1,110 @@
+/* Background Cloud Effect */
+.skills-container {
+  position: relative;
+  padding: 60px 20px;
+  overflow: hidden;
+  background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
+  min-width: 100%;
+  min-height: 100%;
+  border-radius: 12px;
+}
+
+/* Cloud Animation */
+.skills-container::before,
+.skills-container::after {
+  content: "";
+  position: absolute;
+  background: url('https://plus.unsplash.com/premium_photo-1726736505346-aa817e3e8fd5?q=80&w=902&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  animation: moveClouds  linear infinite;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.skills-container::after {
+  animation-direction: reverse;
+  opacity: 0.15;
+}
+
+@keyframes moveClouds {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Heading Style */
+.skills-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0b3d91;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Skill Item Style */
+.skill-item {
+  background: #c0bebe;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Skill Icon */
+.skill-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Floating Image Animation */
+.coding-img {
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  animation: floatImage 6s ease-in-out infinite;
+  z-index: 1;
+  position: relative;
+}
+
+@keyframes floatImage {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .skills-heading {
+    font-size: 2rem;
+  }
+
+  .skill-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .coding-img {
+    width: 100%;
+    margin-top: 30px;
+  }
+}
