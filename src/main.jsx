@@ -1,16 +1,12 @@
-// src/index.js
-import { StrictMode } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App.jsx';
-
-// Dynamically set basename only for production
-const basename = import.meta.env.MODE === 'production' ? '/saran-portfolio' : '/';
+import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter basename={basename}>
+  <React.StrictMode>
+    <BrowserRouter basename="/portfolio">
       <App />
     </BrowserRouter>
-  </StrictMode>
+  </React.StrictMode>
 );
