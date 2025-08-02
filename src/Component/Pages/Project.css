@@ -1,99 +1,77 @@
-/* Portfolio Container */
+/* Full-screen container with globe background */
 .portfolio-container {
-  background: url("https://wallpapers.com/images/hd/integral-project-management-cover-erpo8ef1af3wuquu.jpg") no-repeat center center/cover;
-  padding: 60px 20px;
-  font-family: 'Poppins', sans-serif;
   min-height: 100vh;
   width: 100%;
-}
-
-/* Section Title */
-.portfolio-container h2 {
-  font-size: 2.4rem;
-  font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 40px;
-}
-
-/* Project Cards */
-.project-card {
-  border: 1px solid #ddd;
-  border-radius: 16px;
+  padding: 2rem 1rem;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
   overflow: hidden;
-  background-color: #fff;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Project card styling */
+.project-card {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+  color: #ffffff;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
 }
 
+/* Card image rounded */
 .project-card img {
-  width: 100%;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
   height: 200px;
   object-fit: cover;
 }
 
-/* Card Content */
-.project-card .card-body {
-  padding: 20px;
-}
-
-.project-card .card-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #333;
-}
-
-.project-card .card-text {
-  font-size: 0.95rem;
-  color: #555;
-  margin-top: 10px;
-}
-
-/* View Project Button */
-.project-card .btn-primary {
-  background-color: #7560eb;
-  border: none;
-  border-radius: 30px;
-  padding: 8px 20px;
-  font-size: 0.95rem;
-  transition: background-color 0.3s ease;
-}
-
-.project-card .btn-primary:hover {
-  background-color: #5e49d6;
-}
-
-/* More Info Button */
+/* Button animation */
 .animated-button {
-  background-color: transparent;
-  color: #7560eb;
-  border: 2px solid #7560eb;
-  border-radius: 30px;
-  padding: 6px 18px;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.animated-button:hover {
-  background-color: #7560eb;
-  color: #fff;
+.animated-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .portfolio-container h2 {
-    font-size: 2rem;
-  }
+.animated-button:hover::before {
+  left: 0;
+}
 
-  .project-card .card-title {
-    font-size: 1.15rem;
-  }
+/* Modal image */
+.modal-body img {
+  max-height: 250px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
 
-  .project-card .card-text {
-    font-size: 0.9rem;
+/* Headings and text */
+h2 {
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 1px 1px 4px #00000080;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .project-card img {
+    height: 180px;
   }
 }

@@ -1,7 +1,8 @@
-// src/components/pages/Portfolio.jsx
-import React, { useState } from 'react';
-import { Card, Button, Container, Row, Col, Modal } from 'react-bootstrap';
-import { FaExternalLinkAlt, FaInfoCircle } from 'react-icons/fa';
+import { useEffect, useRef, useState } from "react";
+import * as THREE from "three";
+import GLOBE from "vanta/src/vanta.globe";
+import { Card, Button, Container, Row, Col, Modal } from "react-bootstrap";
+import { FaExternalLinkAlt, FaInfoCircle } from "react-icons/fa";
 import './Project.css';
 
 const projects = [
@@ -11,23 +12,36 @@ const projects = [
     image: "https://images.unsplash.com/photo-1581090700227-1e8eab0a5aaf?auto=format&fit=crop&w=800&q=80",
     link: "https://yourprojectlink.com"
   },
-  {
-    title: "🛠️ Sign Language Recognition",
-    description: `Talk to a man in a language he understands, that goes to his head. Talk to him in his own language, that goes to his heart...`,
-    image: "https://images.unsplash.com/photo-1581091870634-475f0d419b96?auto=format&fit=crop&w=800&q=80",
-    link: "https://yourprojectlink.com"
-  },
-  {
-    title: "🔐 MERN Auth Project",
-    description: "A full stack MERN project with login/logout, JWT authentication, and protected routes.",
-    image: "https://images.unsplash.com/photo-1581092919530-9760a7b28a38?auto=format&fit=crop&w=800&q=80",
-    link: "https://yourprojectlink.com"
-  }
 ];
 
-function Portfolio() {
+function Project() {
   const [showModal, setShowModal] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
+  const vantaRef = useRef(null);
+  const [vantaEffect, setVantaEffect] = useState(null);
+
+  useEffect(() => {
+    if (!vantaEffect) {
+      setVantaEffect(
+        GLOBE({
+          el: vantaRef.current,
+          THREE: THREE,
+          mouseControls: true,
+          touchControls: true,
+          minHeight: 500.0,
+          minWidth: 200.0,
+          scale: 1.0,
+          color: 0x308aa7,
+          color2: 0xe62222,
+          backgroundColor: 0x504550,
+        })
+      );
+    }
+
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffect]);
 
   const handleMoreInfo = (project) => {
     setActiveProject(project);
@@ -35,71 +49,62 @@ function Portfolio() {
   };
 
   return (
-    <Container className="portfolio-container py-5">
-      <h2 className="text-center mb-5">🚀 My Projects</h2>
-      <Row>
-        {projects.map((project, index) => (
-          <Col xs={12} sm={6} md={4} key={index} className="mb-4">
-            <Card className="project-card h-100">
-              <Card.Img variant="top" src={project.image} alt={project.title} />
-              <Card.Body className="d-flex flex-column">
-                <Card.Title>{project.title}</Card.Title>
-                <Card.Text>{project.description.slice(0, 100)}...</Card.Text>
-                <div className="mt-auto d-flex flex-wrap gap-2">
-                  <Button
-                    variant="primary"
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaExternalLinkAlt className="me-2" />
-                    View
-                  </Button>
-                  <Button
-                    variant="outline-light"
-                    className="animated-button"
-                    onClick={() => handleMoreInfo(project)}
-                  >
-                    <FaInfoCircle className="me-2" />
-                    More Info
-                  </Button>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+    <div ref={vantaRef} className="portfolio-container text-white py-5">
+      <Container>
+        <h2 className="text-center mb-5">🚀 My Projects</h2>
+        <Row>
+          {projects.map((project, index) => (
+            <Col key={index} xs={12} sm={6} md={4} className="mb-4">
+              <Card className="project-card h-100">
+                <Card.Img variant="top" src={project.image} />
+                <Card.Body className="d-flex flex-column">
+                  <Card.Title>{project.title}</Card.Title>
+                  <Card.Text>{project.description.slice(0, 100)}...</Card.Text>
+                  <div className="mt-auto d-flex flex-wrap gap-2">
+                    <Button
+                      variant="primary"
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaExternalLinkAlt className="me-2" />
+                      View
+                    </Button>
+                    <Button
+                      variant="outline-light"
+                      className="animated-button"
+                      onClick={() => handleMoreInfo(project)}
+                    >
+                      <FaInfoCircle className="me-2" />
+                      More Info
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
 
-      {activeProject && (
         <Modal show={showModal} onHide={() => setShowModal(false)} centered>
           <Modal.Header closeButton>
-            <Modal.Title>{activeProject.title}</Modal.Title>
+            <Modal.Title>{activeProject?.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <img
-              src={activeProject.image}
-              alt={activeProject.title}
-              className="img-fluid mb-3 rounded"
-            />
-            <p>{activeProject.description}</p>
+            <img src={activeProject?.image} alt="" className="img-fluid mb-3 rounded" />
+            <p>{activeProject?.description}</p>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={() => setShowModal(false)}>
               Close
             </Button>
-            <Button
-              variant="primary"
-              href={activeProject.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Button variant="primary" href={activeProject?.link} target="_blank">
               Visit Project
             </Button>
           </Modal.Footer>
         </Modal>
-      )}
-    </Container>
+      </Container>
+    </div>
   );
 }
 
-export default Portfolio;
+export default Project;
