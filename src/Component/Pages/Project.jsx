@@ -5,6 +5,8 @@ import { Card, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { FaExternalLinkAlt, FaInfoCircle } from "react-icons/fa";
 import './Project.css';
 
+
+
 const projects = [
   {
     title: "💻 Speech Emotion Recognition",
@@ -52,38 +54,38 @@ function Project() {
     <div ref={vantaRef} className="portfolio-container text-white py-5">
       <Container>
         <h2 className="text-center mb-5">🚀 My Projects</h2>
-        <Row>
-          {projects.map((project, index) => (
-            <Col key={index} xs={12} sm={6} md={4} className="mb-4">
-              <Card className="project-card h-100">
-                <Card.Img variant="top" src={project.image} />
-                <Card.Body className="d-flex flex-column">
-                  <Card.Title>{project.title}</Card.Title>
-                  <Card.Text>{project.description.slice(0, 100)}...</Card.Text>
-                  <div className="mt-auto d-flex flex-wrap gap-2">
-                    <Button
-                      variant="primary"
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaExternalLinkAlt className="me-2" />
-                      View
-                    </Button>
-                    <Button
-                      variant="outline-light"
-                      className="animated-button"
-                      onClick={() => handleMoreInfo(project)}
-                    >
-                      <FaInfoCircle className="me-2" />
-                      More Info
-                    </Button>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+<Row>
+  {projects.map((project, idx) => (
+    <Col md={6} lg={4} key={idx} className="mb-4">
+      <Card className="bg-dark text-white h-100 shadow-lg project-card">
+        <Card.Img variant="top" src={project.image} alt={project.title} />
+        <Card.Body className="d-flex flex-column">
+          <Card.Title>{project.title}</Card.Title>
+          <Card.Text>{project.description.slice(0, 100)}...</Card.Text>
+          <div className="mt-auto d-flex gap-2">
+            <Button
+              variant="primary"
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaExternalLinkAlt className="me-2" />
+              View
+            </Button>
+            <Button
+              variant="outline-light"
+              className="animated-button"
+              onClick={() => handleMoreInfo(project)}
+            >
+              <FaInfoCircle className="me-2" />
+              More Info
+            </Button>
+          </div>
+        </Card.Body>
+      </Card>
+    </Col>
+  ))}
+</Row>
 
         <Modal show={showModal} onHide={() => setShowModal(false)} centered>
           <Modal.Header closeButton>
